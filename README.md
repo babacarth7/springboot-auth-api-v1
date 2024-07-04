@@ -66,12 +66,12 @@ After running the application, you can use tools like Postman or curl to interac
 ## API Endpoints
 
 ### Authentication
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Authenticate a user and receive a JWT
+- `POST /auth/register` - Register a new user
+- `POST /auth/login` - Authenticate a user and receive a JWT
 
 ### CRUD Operations
-- `GET /api/users/` - Get all users
-- `GET /api/users/me` - Get a single user
+- `GET /users/` - Get all users
+- `GET /users/me` - Get a single user
 
 ## Authentication
 This application uses JWT for authentication. Users must register and log in to obtain a token. The token must be included in the Authorization header of subsequent requests to access protected routes.
