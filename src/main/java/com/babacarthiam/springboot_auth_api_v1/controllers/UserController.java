@@ -3,6 +3,7 @@ package com.babacarthiam.springboot_auth_api_v1.controllers;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ public class UserController {
     }
 
     @GetMapping("/me")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<UserEntity> authenticatedEntity() {
         Authentication authentication = SecurityContextHolder.getContext()
                 .getAuthentication();
@@ -33,6 +35,7 @@ public class UserController {
     }
 
     @GetMapping("/")
+    @PreAuthorize("hasAnyRole('ADMIN', 'SUPER_ADMIN')")
     public ResponseEntity<List<UserEntity>> allUserEntities() {
         List<UserEntity> userEntities = userService.allUserEntities();
 
